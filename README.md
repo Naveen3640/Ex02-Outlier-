@@ -16,11 +16,16 @@ You are given bhp.csv which contains property prices in the city of banglore, In
     
     
  # Code:
-import numpy as np
+import numpy as np  
+
 import pandas as pd
+
 from scipy import stats
+
 import seaborn as sns
+
 df = pd.read_csv("bhp.csv")
+
 print(df)
 
 1.Remove outliers using IQR
