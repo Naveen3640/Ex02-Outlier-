@@ -29,8 +29,11 @@ df = pd.read_csv("bhp.csv")
 print(df)
 
 1.Remove outliers using IQR
+
 median = df['price_per_sqft'].quantile(0.5)
+
 Q1 = df['price_per_sqft'].quantile(0.25)
+
 Q3 = df['price_per_sqft'].quantile(0.75)
 IQR = Q3-Q1
 df1=df[((df['price_per_sqft']>=Q1-1.5*IQR)&(df['price_per_sqft']<=Q3+1.5*IQR))]
