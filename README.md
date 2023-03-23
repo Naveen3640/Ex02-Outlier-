@@ -34,42 +34,69 @@ median = df['price_per_sqft'].quantile(0.5)
 
 Q1 = df['price_per_sqft'].quantile(0.25)
 
-Q3 = df['price_per_sqft'].quantile(0.75)
+Q3 = df['price_per_sqft'].quantile(0.75)    
+
 IQR = Q3-Q1
+
 df1=df[((df['price_per_sqft']>=Q1-1.5*IQR)&(df['price_per_sqft']<=Q3+1.5*IQR))]
+
 print(df1)
 
 3.Use zscore of 3 to remove outliers. This is quite similar to IQR and you will get
 exact same result
+
 from scipy import stats
+
 z=np.abs(stats.zscore(df1['price_per_sqft']))
+
 df1=df1[(z<3)]
+
 print(df1)
 
 (4) for the data set height_weight.csv
+
 import numpy as np
+
 import pandas as pd
+
 from scipy import stats
+
 import seaborn as sns
+
 df = pd.read_csv("height_weight.csv")
+
 print(df)
 
 (i) Using IQR detect weight outliers and print them
+
 median=df['weight'].quantile(0.5)
+
 Q1 = df['weight'].quantile(0.25)
+
 Q3 = df['weight'].quantile(0.75)
+
 IQR = Q3-Q1
+
 df1=df[((df['weight']>=Q1-1.5*IQR)&(df['weight']<=Q3+1.5*IQR))]
+
 print(df1)
 
 (ii) Using IQR, detect height outliers and print them
+
 median=df['height'].quantile(0.5)
+
 Q1 = df['height'].quantile(0.25)
+
 Q3 = df['height'].quantile(0.75)
+
 IQR = Q3-Q1
+
 low=Q1-1.5*IQR
+
 high=Q3+1.5*IQR
+
 df1=df[((df['height']>=low)&(df['height']<=high))]
+
 print(df1)
 
 # Output:
